@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Retro cyber-terminal dashboard and Portugal electricity (MIBEL/OMIE) market monitor.">
+  <meta name="theme-color" content="#020508">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>Rafael Terminal :: MIBEL Grid</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 fill=%22%23020508%22/><text x=%224%22 y=%2222%22 fill=%22%23ffaf00%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2218%22>&gt;_</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Ambient ASCII Plasma Canvas -->
+  <canvas id="plasma" aria-hidden="true"></canvas>
+
+  <!-- Central Terminal Card -->
+  <main class="card-wrapper">
+    <section class="card" aria-label="System Profile and Energy Dashboard">
+      <!-- HUD Navigation Header -->
+      <nav class="hud-nav" aria-label="Dashboard Views">
+        <div class="nav-left">
+          <button type="button" class="tab-btn active" id="tab-profile" data-view="profile" data-i18n="tab_profile">
+            [ 1: PROFILE ]
+          </button>
+          <button type="button" class="tab-btn" id="tab-energy" data-view="energy" data-i18n="tab_energy">
+            [ 2: ENERGY MIBEL-PT ]
+          </button>
+        </div>
+        <div class="nav-right">
+          <button type="button" class="lang-btn" id="btn-lang-toggle" title="Swap language (EN / PT) [Key: L]">
+            [LANG: EN]
+          </button>
+          <button type="button" class="auto-cycle-btn" id="btn-auto-cycle" title="Toggle Auto-cycle between views for ambient display [Key: A]" data-i18n="auto_cycle_off">
+            [AUTO: OFF]
+          </button>
+        </div>
+      </nav>
+
+      <!-- VIEW 1: Personal Profile & HUD -->
+      <div id="view-profile" class="view-panel active">
+        <div class="identity">rafael@machado</div>
+<!--
+        <div class="section">
+          <div class="section-title">About Me</div>
+
+          <div class="row">
+            <span class="label">Location</span>
+            <span class="separator">::</span>
+            <span class="value">Lisbon, Portugal</span>
+          </div>
+
+          <div class="row">
+            <span class="label">Role</span>
+            <span class="separator">::</span>
+            <span class="value">Project Manager / Analyst</span>
+          </div>
+
+          <div class="row">
+            <span class="label">Tools</span>
+            <span class="separator">::</span>
+            <span class="value">Python, R, SQL, Docker, Power BI</span>
+          </div>
+
+          <div class="row">
+            <span class="label">Interests</span>
+            <span class="separator">::</span>
+            <span class="value">Open Data &amp; Urban Mobility</span>
+          </div>
+        </div>
+-->
+        <div class="section">
+          <div class="section-title" data-i18n="dashboard">Dashboard</div>
+
+          <div class="row">
+            <span class="label" data-i18n="time">Time</span>
+            <span class="separator">::</span>
+            <span class="value" id="time" aria-live="polite">--:--:--</span>
+          </div>
+
+          <div class="row">
+            <span class="label" data-i18n="weather">Weather</span>
+            <span class="separator">::</span>
+            <span class="value" data-i18n="weather_val">22°C / CLEAR</span>
+          </div>
+
+          <div class="row">
+            <span class="label" data-i18n="energy">Energy</span>
+            <span class="separator">::</span>
+            <span class="value energy-profile-val">
+              <span id="energy-status-text" class="status-highlight">LOADING...</span>
+              <button type="button" class="link-btn" id="btn-goto-energy" title="Switch to Energy Dashboard view" data-i18n="view_grid">[VIEW GRID ↵]</button>
+            </span>
+          </div>
+
+          <div class="row">
+            <span class="label" data-i18n="status">Status</span>
+            <span class="separator">::</span>
+            <span class="value" data-i18n="status_online">ONLINE</span>
+          </div>
+        </div>
+
+        <div class="prompt" aria-hidden="true">
+          rafael@machado:~$ <span class="cursor">█</span>
+        </div>
+      </div>
+
+      <!-- VIEW 2: Portugal Electricity (MIBEL) Dashboard -->
+      <div id="view-energy" class="view-panel" style="display: none;">
+        <!-- Real-Time Spot Price Banner -->
+        <div class="energy-banner">
+          <div class="banner-top">
+            <span class="region-badge" id="source-badge">MIBEL :: PORTUGAL (OMIE OFFICIAL)</span>
+            <span id="energy-badge" class="badge badge-normal">NORMAL</span>
+          </div>
+
+          <div class="banner-price">
+            <span class="price-big" id="current-price-val">--.--</span>
+            <span class="price-unit">€/MWh</span>
+            <span class="price-kwh" id="current-price-kwh">(--.- c€/kWh)</span>
+          </div>
+
+          <div class="banner-intraday" id="intraday-stats">
+            <span><span data-i18n="today_min">TODAY MIN</span>: <b id="today-min">--</b> €</span>
+            <span class="dot">·</span>
+            <span><span data-i18n="today_avg">AVG</span>: <b id="today-avg">--</b> €</span>
+            <span class="dot">·</span>
+            <span><span data-i18n="today_max">MAX</span>: <b id="today-max">--</b> €</span>
+          </div>
+        </div>
+
+        <!-- Section: Price Evolution (Week / Month) -->
+        <div class="section">
+          <div class="section-header-row">
+            <div class="section-title" data-i18n="price_evolution">Price Evolution</div>
+            <button type="button" class="cycle-btn" id="btn-cycle-evolution" title="Cycle between 24-Hour, 7-Day, and 30-Day evolution">
+              <span class="cycle-arrow">◄</span>
+              <span id="label-evolution-mode">24-HOUR (LAST 24H)</span>
+              <span class="cycle-arrow">►</span>
+            </button>
+          </div>
+
+          <div class="chart-panel">
+            <div class="chart-hud-readout" id="evolution-hud-readout">[ TELEMETRY: HOVER/TAP GRAPH FOR DATA ]</div>
+            <svg id="evolution-chart-svg" class="terminal-graph" viewBox="0 0 600 170" preserveAspectRatio="none" role="img" aria-label="Price Evolution Graph"></svg>
+          </div>
+
+          <div class="period-stats" id="evolution-stats">
+            <!-- Period stats rendered via js/energy.js -->
+          </div>
+        </div>
+
+        <!-- Section: Price Prediction (Tomorrow / 7-Day) -->
+        <div class="section">
+          <div class="section-header-row">
+            <div class="section-title" data-i18n="price_prediction">Price Prediction</div>
+            <button type="button" class="cycle-btn" id="btn-cycle-prediction" title="Cycle between Tomorrow Day-Ahead and 7-Day Outlook">
+              <span class="cycle-arrow">◄</span>
+              <span id="label-prediction-mode">TOMORROW (DAY-AHEAD)</span>
+              <span class="cycle-arrow">►</span>
+            </button>
+          </div>
+
+          <div class="chart-panel">
+            <div class="chart-hud-readout" id="prediction-hud-readout">[ TELEMETRY: HOVER/TAP GRAPH FOR DATA ]</div>
+            <svg id="prediction-chart-svg" class="terminal-graph" viewBox="0 0 600 170" preserveAspectRatio="none" role="img" aria-label="Price Prediction Graph"></svg>
+          </div>
+
+          <div class="recommendation-box" id="prediction-recommendation">
+            <!-- Optimal consumption advice rendered via js/energy.js -->
+          </div>
+        </div>
+
+        <!-- Energy View Controls & Source Bar -->
+        <div class="energy-footer-bar">
+          <div class="hotkey-tips">
+            <span id="sync-status-indicator" class="sync-active" data-i18n="sync_badge_label">[SYNC: AUTO (15M)]</span> · <span id="hotkey-tips-text" data-i18n="hotkey_hint">[Keys: 1/2 View · W Evolution · D/F Forecast · R Refresh · A Auto · L Lang]</span>
+          </div>
+          <button type="button" class="action-btn" id="btn-refresh-energy" title="Fetch fresh market spot data" data-i18n="refresh_btn">
+            [REFRESH ↻]
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CRT Scanline Overlay -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- Scripts -->
+  <script src="js/plasma.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/energy.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
