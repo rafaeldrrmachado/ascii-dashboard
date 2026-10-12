@@ -5,33 +5,53 @@
 (function () {
   "use strict";
 
-  let activeView = "profile"; // 'profile' | 'energy'
+  const VIEWS = ["profile", "energy", "erse"];
+  let activeView = "profile"; // 'profile' | 'energy' | 'erse'
   let autoCycleTimer = null;
   let isAutoCycling = false;
-  const AUTO_CYCLE_INTERVAL_MS = 25000; // 25 seconds per view on ambient phone screens
+  const AUTO_CYCLE_INTERVAL_MS = 25000; // 25 seconds per view on ambient displays
 
   function switchView(viewName) {
+    if (!VIEWS.includes(viewName)) return;
     activeView = viewName;
 
     const viewProfile = document.getElementById("view-profile");
     const viewEnergy = document.getElementById("view-energy");
+    const viewErse = document.getElementById("view-erse");
     const tabProfile = document.getElementById("tab-profile");
     const tabEnergy = document.getElementById("tab-energy");
+    const tabErse = document.getElementById("tab-erse");
     const cardEl = document.querySelector(".card");
 
-    if (viewName === "energy") {
-      if (viewProfile) viewProfile.style.display = "none";
-      if (viewEnergy) viewEnergy.style.display = "block";
-      if (tabProfile) tabProfile.classList.remove("active");
-      if (tabEnergy) tabEnergy.classList.add("active");
-      if (cardEl) cardEl.setAttribute("data-view", "energy");
-    } else {
-      if (viewEnergy) viewEnergy.style.display = "none";
+    // Hide all view panels
+    if (viewProfile) viewProfile.style.display = "none";
+    if (viewEnergy) viewEnergy.style.display = "none";
+    if (viewErse) viewErse.style.display = "none";
+
+    // Deactivate all tab buttons
+    if (tabProfile) tabProfile.classList.remove("active");
+    if (tabEnergy) tabEnergy.classList.remove("active");
+    if (tabErse) tabErse.classList.remove("active");
+
+    // Activate selected view
+    if (viewName === "profile") {
       if (viewProfile) viewProfile.style.display = "block";
-      if (tabEnergy) tabEnergy.classList.remove("active");
       if (tabProfile) tabProfile.classList.add("active");
-      if (cardEl) cardEl.setAttribute("data-view", "profile");
+    } else if (viewName === "energy") {
+      if (viewEnergy) viewEnergy.style.display = "block";
+      if (tabEnergy) tabEnergy.classList.add("active");
+    } else if (viewName === "erse") {
+      if (viewErse) viewErse.style.display = "block";
+      if (tabErse) tabErse.classList.add("active");
     }
+
+    if (cardEl) cardEl.setAttribute("data-view", viewName);
+  }
+
+  function cycleNextView() {
+    const currentIndex = VIEWS.indexOf(activeView);
+    const nextIndex = (currentIndex + 1) % VIEWS.length;
+    switchView(VIEWS[nextIndex]);
   }
 
   function updateAutoCycleBtn() {
@@ -54,7 +74,7 @@
 
     if (isAutoCycling) {
       autoCycleTimer = setInterval(() => {
-        switchView(activeView === "profile" ? "energy" : "profile");
+        cycleNextView();
       }, AUTO_CYCLE_INTERVAL_MS);
     } else {
       if (autoCycleTimer) {
@@ -67,6 +87,7 @@
   function initTabs() {
     const tabProfile = document.getElementById("tab-profile");
     const tabEnergy = document.getElementById("tab-energy");
+    const tabErse = document.getElementById("tab-erse");
     const btnGotoEnergy = document.getElementById("btn-goto-energy");
     const btnAutoCycle = document.getElementById("btn-auto-cycle");
     const btnLang = document.getElementById("btn-lang-toggle");
@@ -76,6 +97,9 @@
     }
     if (tabEnergy) {
       tabEnergy.addEventListener("click", () => switchView("energy"));
+    }
+    if (tabErse) {
+      tabErse.addEventListener("click", () => switchView("erse"));
     }
     if (btnGotoEnergy) {
       btnGotoEnergy.addEventListener("click", () => switchView("energy"));
@@ -99,9 +123,11 @@
         switchView("profile");
       } else if (key === "2" || key === "e") {
         switchView("energy");
+      } else if (key === "3" || key === "c") {
+        switchView("erse");
       } else if (key === "tab") {
         e.preventDefault();
-        switchView(activeView === "profile" ? "energy" : "profile");
+        cycleNextView();
       } else if (key === "w" || key === "m") {
         if (window.EnergyDashboard && activeView === "energy") {
           window.EnergyDashboard.cycleEvolution();
@@ -111,8 +137,10 @@
           window.EnergyDashboard.cyclePrediction();
         }
       } else if (key === "r") {
-        if (window.EnergyDashboard) {
+        if (window.EnergyDashboard && activeView === "energy") {
           window.EnergyDashboard.refresh();
+        } else if (window.ErseSimulator && activeView === "erse") {
+          window.ErseSimulator.update();
         }
       } else if (key === "a") {
         toggleAutoCycle();
@@ -182,6 +210,11 @@
     // 5. Initialize Portugal electricity dashboard
     if (window.EnergyDashboard && typeof window.EnergyDashboard.init === "function") {
       window.EnergyDashboard.init();
+    }
+
+    // 6. Initialize ERSE retail tariff comparator
+    if (window.ErseSimulator && typeof window.ErseSimulator.init === "function") {
+      window.ErseSimulator.init();
     }
   }
 

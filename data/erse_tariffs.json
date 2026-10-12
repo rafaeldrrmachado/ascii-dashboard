@@ -1,0 +1,480 @@
+{
+  "market": "ERSE_PT",
+  "source": "ERSE (simuladorprecos.erse.pt)",
+  "download_url": "https://simuladorprecos.erse.pt/Admin/csvs/20261012%20145512%20CSV.zip",
+  "last_updated": "2026-10-12T17:02:29.196442",
+  "total_suppliers": 10,
+  "regulated_supplier": "TUR",
+  "tariffs": [
+    {
+      "id": "tur_tur",
+      "com_code": "TUR",
+      "supplier": "SU Eletricidade (Regulado)",
+      "plan_name": "Tarifa Regulada",
+      "proposal_code": "TUR",
+      "is_regulated": true,
+      "is_indexed": false,
+      "green_energy": false,
+      "color": "#00ffaa",
+      "website": "https://sueletricidade.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.1917,
+            "tv": 0.1711
+          },
+          "dual": {
+            "tf": 0.1917,
+            "tv_fora_vazio": 0.2045,
+            "tv_vazio": 0.1143
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.2499,
+            "tv": 0.1711
+          },
+          "dual": {
+            "tf": 0.2499,
+            "tv_fora_vazio": 0.2045,
+            "tv_vazio": 0.1143
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.3659,
+            "tv": 0.1711
+          },
+          "dual": {
+            "tf": 0.3659,
+            "tv_fora_vazio": 0.2045,
+            "tv_vazio": 0.1143
+          }
+        }
+      }
+    },
+    {
+      "id": "edpc_edpc_10",
+      "com_code": "EDPC",
+      "supplier": "EDP Comercial",
+      "plan_name": "Eletricidade",
+      "proposal_code": "EDPC_10",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": true,
+      "color": "#ff3b30",
+      "website": "https://edp.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.2891,
+            "tv": 0.1671
+          },
+          "dual": {
+            "tf": 0.4253,
+            "tv_fora_vazio": 0.1935,
+            "tv_vazio": 0.1119
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.4347,
+            "tv": 0.1671
+          },
+          "dual": {
+            "tf": 0.5717,
+            "tv_fora_vazio": 0.1935,
+            "tv_vazio": 0.1119
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.578,
+            "tv": 0.1671
+          },
+          "dual": {
+            "tf": 0.7722,
+            "tv_fora_vazio": 0.1935,
+            "tv_vazio": 0.1119
+          }
+        }
+      }
+    },
+    {
+      "id": "end_end_03",
+      "com_code": "END",
+      "supplier": "Endesa",
+      "plan_name": "Quero+ Luz",
+      "proposal_code": "END_03",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": false,
+      "color": "#00aaff",
+      "website": "https://endesa.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.444706,
+            "tv": 0.190318
+          },
+          "dual": {
+            "tf": 0.446856,
+            "tv_fora_vazio": 0.225492,
+            "tv_vazio": 0.168044
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.579468,
+            "tv": 0.190318
+          },
+          "dual": {
+            "tf": 0.529502,
+            "tv_fora_vazio": 0.225492,
+            "tv_vazio": 0.168044
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.871438,
+            "tv": 0.190318
+          },
+          "dual": {
+            "tf": 0.676132,
+            "tv_fora_vazio": 0.225492,
+            "tv_vazio": 0.168044
+          }
+        }
+      }
+    },
+    {
+      "id": "ibd_ibd_03",
+      "com_code": "IBD",
+      "supplier": "Iberdrola",
+      "plan_name": "Mais Casa FE+DD",
+      "proposal_code": "IBD_03",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": true,
+      "color": "#30d158",
+      "website": "https://iberdrola.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.370558,
+            "tv": 0.163918
+          },
+          "dual": {
+            "tf": 0.370558,
+            "tv_fora_vazio": 0.196718,
+            "tv_vazio": 0.106518
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.491426,
+            "tv": 0.163918
+          },
+          "dual": {
+            "tf": 0.491426,
+            "tv_fora_vazio": 0.196718,
+            "tv_vazio": 0.106518
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.621232,
+            "tv": 0.163918
+          },
+          "dual": {
+            "tf": 0.621232,
+            "tv_fora_vazio": 0.196718,
+            "tv_vazio": 0.106518
+          }
+        }
+      }
+    },
+    {
+      "id": "eniplenitude_eniplenitude_05",
+      "com_code": "ENIPLENITUDE",
+      "supplier": "Plenitude (Eni)",
+      "plan_name": "TARIFA ENERGY",
+      "proposal_code": "ENIPLENITUDE_05",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": true,
+      "color": "#ffd60a",
+      "website": "https://eniplenitude.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.6418,
+            "tv": 0.204484
+          },
+          "dual": {
+            "tf": 0.6418,
+            "tv_fora_vazio": 0.233901,
+            "tv_vazio": 0.178886
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.699,
+            "tv": 0.204484
+          },
+          "dual": {
+            "tf": 0.699,
+            "tv_fora_vazio": 0.233901,
+            "tv_vazio": 0.178886
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.8136,
+            "tv": 0.204484
+          },
+          "dual": {
+            "tf": 0.8136,
+            "tv_fora_vazio": 0.233901,
+            "tv_vazio": 0.178886
+          }
+        }
+      }
+    },
+    {
+      "id": "gold_gold_05",
+      "com_code": "GOLD",
+      "supplier": "Goldenergy",
+      "plan_name": "Monoeletrico ACP+",
+      "proposal_code": "GOLD_05",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": true,
+      "color": "#ff9f0a",
+      "website": "https://goldenergy.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.3054,
+            "tv": 0.1454666
+          },
+          "dual": {
+            "tf": 0.3054,
+            "tv_fora_vazio": 0.1775666,
+            "tv_vazio": 0.1131666
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.4328,
+            "tv": 0.1454666
+          },
+          "dual": {
+            "tf": 0.4328,
+            "tv_fora_vazio": 0.1775666,
+            "tv_vazio": 0.1131666
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.6799,
+            "tv": 0.1454666
+          },
+          "dual": {
+            "tf": 0.6799,
+            "tv_fora_vazio": 0.1775666,
+            "tv_vazio": 0.1131666
+          }
+        }
+      }
+    },
+    {
+      "id": "galp_galp_04",
+      "com_code": "GALP",
+      "supplier": "Galp",
+      "plan_name": "Casa & Estrada Eletricidade Verde & Gás Natural & Combustível",
+      "proposal_code": "GALP_04",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": true,
+      "color": "#ff6900",
+      "website": "https://galp.com",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.297718982689024,
+            "tv": 0.146711591695062
+          },
+          "dual": {
+            "tf": 0.297718982689024,
+            "tv_fora_vazio": 0.178596106244269,
+            "tv_vazio": 0.122214820113228
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.350591941703872,
+            "tv": 0.146711591695062
+          },
+          "dual": {
+            "tf": 0.350591941703872,
+            "tv_fora_vazio": 0.178596106244269,
+            "tv_vazio": 0.122214820113228
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.56109511780072,
+            "tv": 0.15417132284118
+          },
+          "dual": {
+            "tf": 0.56109511780072,
+            "tv_fora_vazio": 0.173635789753029,
+            "tv_vazio": 0.112232483552129
+          }
+        }
+      }
+    },
+    {
+      "id": "repsol_repsol_04",
+      "com_code": "REPSOL",
+      "supplier": "Repsol",
+      "plan_name": "LEVE DD",
+      "proposal_code": "REPSOL_04",
+      "is_regulated": false,
+      "is_indexed": false,
+      "green_energy": false,
+      "color": "#ff453a",
+      "website": "https://repsol.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.2918,
+            "tv": 0.16095
+          },
+          "dual": {
+            "tf": 0.2918,
+            "tv_fora_vazio": 0.18910494,
+            "tv_vazio": 0.10432257
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.4491,
+            "tv": 0.16095
+          },
+          "dual": {
+            "tf": 0.4491,
+            "tv_fora_vazio": 0.18910494,
+            "tv_vazio": 0.10432257
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.5636,
+            "tv": 0.16095
+          },
+          "dual": {
+            "tf": 0.5636,
+            "tv_fora_vazio": 0.18910494,
+            "tv_vazio": 0.10432257
+          }
+        }
+      }
+    },
+    {
+      "id": "coop_coop_02",
+      "com_code": "COOP",
+      "supplier": "Coopérnico (Cooperativa)",
+      "plan_name": "Coopérnico ÚNICO",
+      "proposal_code": "COOP_02",
+      "is_regulated": false,
+      "is_indexed": true,
+      "green_energy": true,
+      "color": "#32d74b",
+      "website": "https://coopernico.org",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.1885,
+            "tv": 0.2482885
+          },
+          "dual": {
+            "tf": 0.1885,
+            "tv_fora_vazio": 0.2710885,
+            "tv_vazio": 0.2033885
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.2474,
+            "tv": 0.2482885
+          },
+          "dual": {
+            "tf": 0.2474,
+            "tv_fora_vazio": 0.2710885,
+            "tv_vazio": 0.2033885
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.3653,
+            "tv": 0.2482885
+          },
+          "dual": {
+            "tf": 0.3653,
+            "tv_fora_vazio": 0.2710885,
+            "tv_vazio": 0.2033885
+          }
+        }
+      }
+    },
+    {
+      "id": "luzboa_luzboa_01",
+      "com_code": "LUZBOA",
+      "supplier": "Luzboa",
+      "plan_name": "LUZBOA SPOTDEF",
+      "proposal_code": "LUZBOA_01",
+      "is_regulated": false,
+      "is_indexed": true,
+      "green_energy": false,
+      "color": "#bf5af2",
+      "website": "https://luzboa.pt",
+      "rates": {
+        "3.45": {
+          "simple": {
+            "tf": 0.2718,
+            "tv": 0.250040487201044
+          },
+          "dual": {
+            "tf": 0.2718,
+            "tv_fora_vazio": 0.27428693440278,
+            "tv_vazio": 0.203115461118615
+          }
+        },
+        "4.60": {
+          "simple": {
+            "tf": 0.3491,
+            "tv": 0.250040487201044
+          },
+          "dual": {
+            "tf": 0.3491,
+            "tv_fora_vazio": 0.27428693440278,
+            "tv_vazio": 0.203115461118615
+          }
+        },
+        "6.90": {
+          "simple": {
+            "tf": 0.4636,
+            "tv": 0.250040487201044
+          },
+          "dual": {
+            "tf": 0.4636,
+            "tv_fora_vazio": 0.27428693440278,
+            "tv_vazio": 0.203115461118615
+          }
+        }
+      }
+    }
+  ]
+}

@@ -30,6 +30,9 @@
           <button type="button" class="tab-btn" id="tab-energy" data-view="energy" data-i18n="tab_energy">
             [ 2: ENERGY MIBEL-PT ]
           </button>
+          <button type="button" class="tab-btn" id="tab-erse" data-view="erse" data-i18n="tab_erse">
+            [ 3: ERSE COMPARATOR ]
+          </button>
         </div>
         <div class="nav-right">
           <button type="button" class="lang-btn" id="btn-lang-toggle" title="Swap language (EN / PT) [Key: L]">
@@ -178,11 +181,185 @@
         <!-- Energy View Controls & Source Bar -->
         <div class="energy-footer-bar">
           <div class="hotkey-tips">
-            <span id="sync-status-indicator" class="sync-active" data-i18n="sync_badge_label">[SYNC: AUTO (15M)]</span> · <span id="hotkey-tips-text" data-i18n="hotkey_hint">[Keys: 1/2 View · W Evolution · D/F Forecast · R Refresh · A Auto · L Lang]</span>
+            <span id="sync-status-indicator" class="sync-active" data-i18n="sync_badge_label">[SYNC: AUTO (15M)]</span> · <span id="hotkey-tips-text" data-i18n="hotkey_hint">[Keys: 1/2/3 View · C Comparator · W Evolution · D/F Forecast · R Refresh · A Auto · L Lang]</span>
           </div>
           <button type="button" class="action-btn" id="btn-refresh-energy" title="Fetch fresh market spot data" data-i18n="refresh_btn">
             [REFRESH ↻]
           </button>
+        </div>
+      </div>
+
+      <!-- VIEW 3: ERSE Electricity Provider Comparator -->
+      <div id="view-erse" class="view-panel" style="display: none;">
+        <!-- Top Summary Banner -->
+        <div class="erse-banner">
+          <div class="banner-top">
+            <span class="region-badge" id="erse-source-badge" data-i18n="erse_source_badge">BASE OFICIAL ERSE (TARIFAS BTN)</span>
+            <a href="https://simuladorprecos.erse.pt/" target="_blank" rel="noopener noreferrer" class="erse-source-link" data-i18n="erse_official_link">[ SIMULADOR OFICIAL ERSE ↗ ]</a>
+          </div>
+
+          <div class="erse-hud-summary">
+            <div class="erse-hud-card">
+              <span class="hud-label" data-i18n="erse_hud_best_label">TARIFA MAIS ECONÓMICA</span>
+              <div class="hud-val" id="erse-hud-best-val">--.-- €/mês</div>
+              <div class="hud-sub" id="erse-hud-best-name">--</div>
+            </div>
+
+            <div class="erse-hud-card" id="erse-hud-card-benchmark">
+              <span class="hud-label" id="erse-hud-benchmark-title" data-i18n="erse_hud_reg_label">MERCADO REGULADO (TUR)</span>
+              <div class="hud-val" id="erse-hud-reg-val">--.-- €/mês</div>
+              <div class="hud-sub" id="erse-hud-benchmark-sub">SU Eletricidade</div>
+            </div>
+
+            <div class="erse-hud-card hud-card-highlight">
+              <span class="hud-label" id="erse-hud-savings-title" data-i18n="erse_hud_savings_label">POUPANÇA ANUAL MÁXIMA</span>
+              <div class="hud-val" id="erse-hud-savings-val">--.-- €/ano</div>
+              <div class="hud-sub" id="erse-hud-savings-sub">vs Regulado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator Configuration Section -->
+        <div class="section erse-config-section">
+          <div class="section-title" data-i18n="erse_title">Simulador de Eletricidade ERSE</div>
+
+          <!-- Power Selector -->
+          <div class="config-group">
+            <span class="config-label" data-i18n="erse_power_label">POTÊNCIA CONTRATADA (kVA)</span>
+            <div class="config-chips">
+              <button type="button" class="chip-btn btn-erse-power active" data-power="3.45">3.45 kVA</button>
+              <button type="button" class="chip-btn btn-erse-power" data-power="4.60">4.60 kVA</button>
+              <button type="button" class="chip-btn btn-erse-power" data-power="6.90">6.90 kVA</button>
+            </div>
+          </div>
+
+          <!-- Hourly Cycle Selector -->
+          <div class="config-group">
+            <span class="config-label" data-i18n="erse_cycle_label">CICLO HORÁRIO</span>
+            <div class="config-chips">
+              <button type="button" class="chip-btn btn-erse-cycle active" data-cycle="simple" data-i18n="erse_cycle_simple">Simples</button>
+              <button type="button" class="chip-btn btn-erse-cycle" data-cycle="dual" data-i18n="erse_cycle_dual">Bi-horário</button>
+            </div>
+          </div>
+
+          <!-- Annual Consumption Presets -->
+          <div class="config-group">
+            <span class="config-label" data-i18n="erse_consumption_label">CONSUMO ANUAL ESTIMADO</span>
+            <div class="config-chips">
+              <button type="button" class="chip-btn btn-erse-preset active" data-kwh="1900" data-i18n="erse_preset_couple">1 900 kWh (Casal)</button>
+              <button type="button" class="chip-btn btn-erse-preset" data-kwh="3900" data-i18n="erse_preset_family">3 900 kWh (Família)</button>
+              <button type="button" class="chip-btn btn-erse-preset" data-kwh="5500" data-i18n="erse_preset_high">5 500 kWh (Elevado / VE)</button>
+            </div>
+          </div>
+
+          <!-- Consumption Fine Slider -->
+          <div class="config-slider-group">
+            <input type="range" id="erse-kwh-slider" min="500" max="10000" step="50" value="1900" class="terminal-slider" aria-label="Ajuste fino de consumo anual">
+            <div id="erse-kwh-val-display" class="slider-readout">1 900 kWh/ano (~158 kWh/mês)</div>
+          </div>
+
+          <!-- Tariff Filter -->
+          <div class="config-group config-filter-group">
+            <span class="config-label" data-i18n="erse_filter_label">FILTRAR OFERTAS</span>
+            <div class="config-chips">
+              <button type="button" class="filter-chip btn-erse-filter active" data-filter="all" data-i18n="erse_filter_all">TODAS AS OFERTAS</button>
+              <button type="button" class="filter-chip btn-erse-filter" data-filter="fixed" data-i18n="erse_filter_fixed">PREÇO FIXO</button>
+              <button type="button" class="filter-chip btn-erse-filter" data-filter="indexed" data-i18n="erse_filter_indexed">INDEXADO OMIE</button>
+              <button type="button" class="filter-chip btn-erse-filter" data-filter="green" data-i18n="erse_filter_green">100% RENOVÁVEL</button>
+            </div>
+          </div>
+
+          <!-- My Current Plan Comparison Drawer -->
+          <div class="my-plan-panel">
+            <div class="my-plan-top">
+              <div class="my-plan-title">
+                <span class="my-plan-icon">&gt;_</span>
+                <span data-i18n="my_plan_header">O MEU PLANO ATUAL (COMPARAR TARIFAS)</span>
+                <span id="my-plan-status-badge" class="my-plan-badge badge-off" data-i18n="my_plan_badge_inactive">[DESLIGADO]</span>
+              </div>
+              <button type="button" class="action-btn" id="btn-toggle-my-plan" data-i18n="my_plan_btn_open">
+                [ CONFIGURAR O MEU PLANO ▾ ]
+              </button>
+            </div>
+
+            <div id="my-plan-form" class="my-plan-form" style="display: none;">
+              <div class="my-plan-inputs-grid">
+                <div class="input-cell input-cell-full">
+                  <label for="input-my-supplier" class="input-label" data-i18n="my_plan_supplier_label">Nome do Comercializador / Contrato:</label>
+                  <input type="text" id="input-my-supplier" placeholder="Ex: Meu EDP Comercial / Endesa / Galp" class="terminal-text-input" />
+                </div>
+
+                <div class="input-cell">
+                  <label for="input-my-tf" class="input-label" data-i18n="my_plan_tf_label">Potência (Termo Fixo €/dia):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="input-my-tf" step="0.0001" min="0" placeholder="0.2500" class="terminal-num-input" />
+                    <span class="unit-tag">€/dia</span>
+                  </div>
+                </div>
+
+                <!-- Simples: Single Energy Rate -->
+                <div class="input-cell" id="my-plan-simple-input-cell">
+                  <label for="input-my-tv" class="input-label" data-i18n="my_plan_tv_label">Energia (Termo Variável €/kWh):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="input-my-tv" step="0.0001" min="0" placeholder="0.1650" class="terminal-num-input" />
+                    <span class="unit-tag">€/kWh</span>
+                  </div>
+                </div>
+
+                <!-- Bi-horário: Peak and Off-Peak Rates -->
+                <div class="input-cell" id="my-plan-dual-fv-cell" style="display: none;">
+                  <label for="input-my-tv-fv" class="input-label" data-i18n="my_plan_tv_fv_label">Fora Vazio (Cheias/Ponta €/kWh):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="input-my-tv-fv" step="0.0001" min="0" placeholder="0.1950" class="terminal-num-input" />
+                    <span class="unit-tag">€/kWh</span>
+                  </div>
+                </div>
+
+                <div class="input-cell" id="my-plan-dual-v-cell" style="display: none;">
+                  <label for="input-my-tv-v" class="input-label" data-i18n="my_plan_tv_v_label">Vazio (Noite/Fim-de-semana €/kWh):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="input-my-tv-v" step="0.0001" min="0" placeholder="0.1100" class="terminal-num-input" />
+                    <span class="unit-tag">€/kWh</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="my-plan-actions">
+                <button type="button" class="chip-btn active" id="btn-apply-my-plan" data-i18n="my_plan_apply">
+                  [ ATIVAR COMPARAÇÃO ✓ ]
+                </button>
+                <button type="button" class="chip-btn" id="btn-disable-my-plan" style="display: none;" data-i18n="my_plan_disable">
+                  [ DESATIVAR ✕ ]
+                </button>
+                <button type="button" class="link-btn" id="btn-clear-my-plan" data-i18n="my_plan_clear">
+                  [ LIMPAR VALORES ]
+                </button>
+              </div>
+
+              <div class="my-plan-tip" data-i18n="my_plan_tip">
+                * Insira os valores líquidos da fatura (sem IVA). O simulador aplica os mesmos impostos (IVA, CAV, IEC, DGEG) automaticamente.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supplier Leaderboard Section -->
+        <div class="section">
+          <div class="section-title" data-i18n="erse_leaderboard_title">CLASSIFICAÇÃO DE COMERCIALIZADORES</div>
+          <div id="erse-leaderboard-list" class="erse-leaderboard-list">
+            <div class="erse-loading">[ A CARREGAR TARIFAS DA ERSE... ]</div>
+          </div>
+          <div class="erse-disclaimer" data-i18n="erse_taxes_note">* Calculado com impostos oficiais para baixa tensão normal (BTN): IVA (6% nos primeiros 100 kWh/mês para &lt;= 6,9 kVA, 23% restante), CAV (2,85€), IEC (0,001€/kWh) e DGEG (0,07€).</div>
+        </div>
+
+        <!-- ERSE View Footer Bar -->
+        <div class="energy-footer-bar">
+          <div class="hotkey-tips">
+            <span class="sync-active" data-i18n="sync_badge_label">[SYNC: AUTO]</span> · <span data-i18n="hotkey_hint">[Keys: 1/2/3 View · C Comparator · W Evol · D/F Forecast · R Refresh · A Auto · L Lang]</span>
+          </div>
+          <a href="https://simuladorprecos.erse.pt/" target="_blank" rel="noopener noreferrer" class="action-btn" title="Simulador oficial ERSE" data-i18n="erse_official_link">
+            [ SIMULADOR OFICIAL ERSE ↗ ]
+          </a>
         </div>
       </div>
     </section>
@@ -195,6 +372,7 @@
   <script src="js/plasma.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/energy.js"></script>
+  <script src="js/erse.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

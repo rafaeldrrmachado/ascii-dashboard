@@ -14,17 +14,45 @@ import json
 import os
 import socket
 import socketserver
+import sys
 import threading
 import time
 import urllib.parse
 import urllib.request
 
+# Ensure UTF-8 output on Windows consoles
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 PORT = 8000
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 OMIE_JSON_PATH = os.path.join(DATA_DIR, "omie_pt.json")
+ERSE_JSON_PATH = os.path.join(DATA_DIR, "erse_tariffs.json")
 SYNC_LOCK = threading.Lock()
 LAST_SYNC_TIME = 0
+
+def is_erse_data_stale():
+    """Check if ERSE retail tariffs dataset is missing or older than 24 hours."""
+    if not os.path.exists(ERSE_JSON_PATH):
+        return True
+    try:
+        return (time.time() - os.path.getmtime(ERSE_JSON_PATH)) > 86400
+    except Exception:
+        return True
+
+def run_erse_sync():
+    """Sync ERSE tariffs in background."""
+    print("[*] Checking / syncing official ERSE retail electricity tariffs...")
+    try:
+        from sync_erse_pt import sync_erse_tariffs
+        sync_erse_tariffs()
+    except Exception as e:
+        print("[-] ERSE sync error:", e)
 
 def get_local_ip():
     """Find the local IP address for easy mobile / old phone access."""
@@ -152,13 +180,18 @@ class AutoSyncHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=BASE_DIR, **kwargs)
 
     def do_GET(self):
-        # Auto-trigger sync when entering the website or requesting energy data
+        # Auto-trigger sync when entering the website or requesting energy/tariff data
         if self.path in ("/", "/index.html", "/data/omie_pt.json", "/api/sync"):
             if is_omie_data_stale():
                 threading.Thread(target=run_omie_sync, daemon=True).start()
 
+        if self.path in ("/", "/index.html", "/data/erse_tariffs.json", "/api/sync"):
+            if is_erse_data_stale():
+                threading.Thread(target=run_erse_sync, daemon=True).start()
+
         if self.path == "/api/sync":
             threading.Thread(target=run_omie_sync, args=(7,), daemon=True).start()
+            threading.Thread(target=run_erse_sync, daemon=True).start()
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -180,6 +213,8 @@ def background_scheduler():
         time.sleep(3600)
         try:
             run_omie_sync(days_back=2)
+            if is_erse_data_stale():
+                run_erse_sync()
         except Exception as e:
             print("Background sync error:", e)
 
@@ -187,6 +222,8 @@ def main():
     # Initial background sync check on startup
     if is_omie_data_stale():
         threading.Thread(target=run_omie_sync, daemon=True).start()
+    if is_erse_data_stale():
+        threading.Thread(target=run_erse_sync, daemon=True).start()
 
     # Start background hourly scheduler
     threading.Thread(target=background_scheduler, daemon=True).start()
