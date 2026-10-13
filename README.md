@@ -42,12 +42,23 @@ ascii-dashboard/
 │   ├── energy.js         # MIBEL/OMIE API client, vector SVG line graph generator & telemetry
 │   ├── erse.js           # ERSE retail tariff comparator, bill simulator & ranking engine
 │   └── app.js            # Dashboard coordinator, tab routing, clock & hotkeys
+├── telegram_bot/         # PoupeLuz Telegram Bot (Vision AI invoice reader & market comparator)
+│   ├── main.py           # Bot entrypoint & polling dispatcher
+│   ├── config.py         # Bot environment configuration
+│   ├── parsers/          # Multimodal Gemini Flash invoice reader
+│   ├── comparator/       # ERSE residential bill calculator & savings engine
+│   ├── handlers/         # Commands, document/photo handlers, & manual questionnaire
+│   ├── templates/        # Localized report formatting
+│   ├── tests/            # Automated test suite
+│   ├── Dockerfile        # Container definition for 24/7 cloud hosting
+│   └── README.md         # Bot setup & sharing guide
 ├── data/
 │   ├── omie_pt.json      # Official OMIE Portuguese spot price dataset (auto-synced)
 │   └── erse_tariffs.json # Verified ERSE domestic retail tariffs dataset (auto-synced)
 ├── sync_omie_pt.py       # OMIE Portugal parser & synchronizer
 ├── sync_erse_pt.py       # ERSE simulator ZIP & CSV parser & synchronizer
 ├── server.py             # Local auto-syncing HTTP server with background workers
+├── .env.example          # Environment variables template for bot & AI keys
 ├── .gitignore            # Git exclusion rules for OS and IDE files
 └── README.md             # Project documentation
 ```
