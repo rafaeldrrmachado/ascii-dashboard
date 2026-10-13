@@ -1,4 +1,4 @@
-# Lightweight container definition for PoupeLuz Telegram Bot
+# Lightweight container definition for PoupaLuz Telegram Bot
 FROM python:3.11-slim
 
 # Prevent Python from writing .pyc files & enable unbuffered logging

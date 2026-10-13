@@ -60,7 +60,7 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
         )
 
     elif data == "share_bot":
-        bot_username = (await context.bot.get_me()).username or "PoupeLuzBot"
+        bot_username = (await context.bot.get_me()).username or "PoupaLuzBot"
         text = tpl.SHARE_TEXT.format(bot_username=bot_username)
         keyboard = [
             [

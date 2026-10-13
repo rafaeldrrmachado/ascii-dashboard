@@ -63,7 +63,7 @@ async def how_to_switch_command(update: Update, context: ContextTypes.DEFAULT_TY
 async def share_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handles /partilhar or /share command."""
     tpl = get_template(context)
-    bot_username = (await context.bot.get_me()).username or "PoupeLuzBot"
+    bot_username = (await context.bot.get_me()).username or "PoupaLuzBot"
     text = tpl.SHARE_TEXT.format(bot_username=bot_username)
 
     keyboard = [

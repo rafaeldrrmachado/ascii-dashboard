@@ -1,5 +1,5 @@
 """
-Main application entrypoint for the PoupeLuz Telegram Bot.
+Main application entrypoint for the PoupaLuz Telegram Bot.
 Initializes dispatcher, registers command & media handlers, and starts polling.
 
 Usage:
@@ -42,7 +42,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
-logger = logging.getLogger("PoupeLuzBot")
+logger = logging.getLogger("PoupaLuzBot")
 
 
 def main():
@@ -70,7 +70,7 @@ def main():
             sys.exit(1)
 
     print("=" * 65)
-    print(" ⚡ POUPELUZ BOT :: COMPARADOR DE FATURAS DE ELETRICIDADE")
+    print(" ⚡ POUPALUZ BOT :: COMPARADOR DE FATURAS DE ELETRICIDADE")
     print("=" * 65)
     print("  • Motor de Visão AI: Ativo (Google Gemini Flash)")
     print("  • Base de Dados ERSE: Ativa (simuladorprecos.erse.pt)")

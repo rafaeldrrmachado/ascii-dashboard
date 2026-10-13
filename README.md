@@ -42,7 +42,7 @@ ascii-dashboard/
 │   ├── energy.js         # MIBEL/OMIE API client, vector SVG line graph generator & telemetry
 │   ├── erse.js           # ERSE retail tariff comparator, bill simulator & ranking engine
 │   └── app.js            # Dashboard coordinator, tab routing, clock & hotkeys
-├── telegram_bot/         # PoupeLuz Telegram Bot (Vision AI invoice reader & market comparator)
+├── telegram_bot/         # PoupaLuz Telegram Bot (Vision AI invoice reader & market comparator)
 │   ├── main.py           # Bot entrypoint & polling dispatcher
 │   ├── config.py         # Bot environment configuration
 │   ├── parsers/          # Multimodal Gemini Flash invoice reader

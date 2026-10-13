@@ -1,4 +1,4 @@
-# PoupeLuz Bot ⚡🤖 — Comparador Inteligente de Faturas de Eletricidade
+# PoupaLuz Bot ⚡🤖 — Comparador Inteligente de Faturas de Eletricidade
 
 Um bot de Telegram aberto, gratuito e partilhável que analisa faturas de eletricidade em Portugal (EDP Comercial, Endesa, Galp, Iberdrola, Goldenergy, Plenitude, Repsol, SU Eletricidade, etc.) através de **Inteligência Artificial Vision** e encontra a alternativa mais barata no mercado regulado pela **ERSE**.
 
@@ -21,7 +21,7 @@ Um bot de Telegram aberto, gratuito e partilhável que analisa faturas de eletri
 ### 1. Obter o Token do Telegram (Grátis, ~30 segundos)
 1. No Telegram, pesquisa por `@BotFather` e clica em **Começar**.
 2. Envia `/newbot`.
-3. Escolhe um nome para o bot (ex: `Poupe Luz PT`) e um username terminado em `bot` (ex: `O_Meu_PoupeLuz_bot`).
+3. Escolhe um nome para o bot (ex: `Poupa Luz PT`) e um username terminado em `bot` (ex: `O_Meu_PoupaLuz_bot`).
 4. O `@BotFather` vai devolver um token do tipo:
    `7891234567:AAFlzAbcDeFgHiJkLmNoPqRsTuVwXyZ`
 
@@ -48,7 +48,7 @@ python -m telegram_bot.main
 Deverás ver a mensagem de sucesso na consola:
 ```text
 =================================================================
- ⚡ POUPELUZ BOT :: COMPARADOR DE FATURAS DE ELETRICIDADE
+ ⚡ POUPALUZ BOT :: COMPARADOR DE FATURAS DE ELETRICIDADE
 =================================================================
   • Motor de Visão AI: Ativo (Google Gemini Flash)
   • Base de Dados ERSE: Ativa (simuladorprecos.erse.pt)
@@ -81,8 +81,8 @@ Para manter o bot ligado 24 horas por dia sem precisares de ter o computador lig
 
 ### Opção B: VPS Linux / Raspberry Pi
 ```bash
-docker build -t poupeluz-bot -f telegram_bot/Dockerfile .
-docker run -d --name poupeluz --env-file .env --restart unless-stopped poupeluz-bot
+docker build -t poupaluz-bot -f telegram_bot/Dockerfile .
+docker run -d --name poupaluz --env-file .env --restart unless-stopped poupaluz-bot
 ```
 
 ---

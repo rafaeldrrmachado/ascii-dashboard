@@ -5,7 +5,7 @@ English messages and report formatting templates for Telegram bot.
 from ..comparator.savings_engine import ComparisonResult
 
 
-WELCOME_TEXT = """⚡ *Welcome to PoupeLuz Bot* 🇵🇹
+WELCOME_TEXT = """⚡ *Welcome to PoupaLuz Bot* 🇵🇹
 
 I help you discover if you are overpaying on your electricity bill in Portugal and find the best alternative from the official ERSE database.
 
@@ -78,7 +78,7 @@ The switch usually takes between 1 and 3 business days.
 4. An up-to-date meter reading.
 """
 
-SHARE_TEXT = """⚡ *Share PoupeLuz Bot with your friends!*
+SHARE_TEXT = """⚡ *Share PoupaLuz Bot with your friends!*
 
 Many families in Portugal overpay 100€ to 200€ every year on electricity without realizing it.
 

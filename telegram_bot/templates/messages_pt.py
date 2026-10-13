@@ -5,7 +5,7 @@ Portuguese messages and report formatting templates for Telegram bot.
 from ..comparator.savings_engine import ComparisonResult
 
 
-WELCOME_TEXT = """⚡ *Olá! Bem-vindo ao PoupeLuz Bot* 🇵🇹
+WELCOME_TEXT = """⚡ *Olá! Bem-vindo ao PoupaLuz Bot* 🇵🇹
 
 Ajudo-te a descobrir se estás a pagar a mais na tua conta de eletricidade e qual é a melhor alternativa no mercado regulado pela ERSE.
 
@@ -88,7 +88,7 @@ O processo demora habitualmente entre 1 e 3 dias úteis.
 🔗 Podes aderir diretamente no website do fornecedor escolhido ou através do simulador oficial da ERSE: https://simuladorprecos.erse.pt/
 """
 
-SHARE_TEXT = """⚡ *Partilha o PoupeLuz Bot com os teus amigos!*
+SHARE_TEXT = """⚡ *Partilha o PoupaLuz Bot com os teus amigos!*
 
 Muitas famílias em Portugal pagam mais 100€ a 200€ por ano na luz sem saberem.
 
