@@ -35,3 +35,23 @@ def check_config():
         missing.append("GEMINI_API_KEY (Free at https://aistudio.google.com - required for reading invoice files)")
     return missing
 
+
+def get_ssl_context():
+    """
+    Returns an SSL context that trusts both the system CA bundle and Windows/enterprise
+    root certificates (essential when running behind corporate proxies or SSL inspection).
+    Can be bypassed if SSL_VERIFY=false is configured in .env.
+    """
+    import ssl
+    ssl_verify_env = os.getenv("SSL_VERIFY", "true").strip().lower()
+    if ssl_verify_env in ("false", "0", "no"):
+        return False
+
+    try:
+        ctx = ssl.create_default_context()
+        ctx.load_default_certs()
+        return ctx
+    except Exception:
+        return True
+
+

@@ -10,7 +10,7 @@ import logging
 from typing import Optional, Tuple
 import httpx
 
-from ..config import GEMINI_API_KEY, GEMINI_MODEL
+from ..config import GEMINI_API_KEY, GEMINI_MODEL, get_ssl_context
 from .schema import InvoiceData
 
 logger = logging.getLogger(__name__)
@@ -92,7 +92,8 @@ async def parse_invoice_with_vision(
     }
 
     try:
-        async with httpx.AsyncClient(timeout=35.0) as client:
+        ssl_ctx = get_ssl_context()
+        async with httpx.AsyncClient(verify=ssl_ctx, timeout=35.0) as client:
             resp = await client.post(url, json=payload)
 
             if resp.status_code == 429:

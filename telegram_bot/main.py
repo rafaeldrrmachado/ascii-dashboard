@@ -16,10 +16,12 @@ from telegram.ext import (
     filters
 )
 
+from telegram.request import HTTPXRequest
 from .config import (
     TELEGRAM_BOT_TOKEN,
     GEMINI_API_KEY,
-    check_config
+    check_config,
+    get_ssl_context
 )
 from .handlers import (
     start_command,
@@ -76,8 +78,19 @@ def main():
     print("=" * 65)
     print("A iniciar o bot... Pressiona Ctrl+C para parar.\n")
 
+    # Configure custom HTTPX request to trust system / Windows CA certs (corporate proxy support)
+    ssl_ctx = get_ssl_context()
+    request_client = HTTPXRequest(httpx_kwargs={"verify": ssl_ctx})
+    get_updates_request_client = HTTPXRequest(httpx_kwargs={"verify": ssl_ctx})
+
     # Build Telegram Application
-    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
+    app = (
+        ApplicationBuilder()
+        .token(TELEGRAM_BOT_TOKEN)
+        .request(request_client)
+        .get_updates_request(get_updates_request_client)
+        .build()
+    )
 
     # Register Command Handlers
     app.add_handler(CommandHandler(["start"], start_command))
