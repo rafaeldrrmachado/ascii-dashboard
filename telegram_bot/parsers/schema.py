@@ -2,8 +2,24 @@
 Pydantic data models for structured electricity invoice extraction and validation.
 """
 
+import re
 from typing import Optional
 from pydantic import BaseModel, Field, field_validator
+
+
+def _clean_numeric(val) -> Optional[float]:
+    if val is None or val == "":
+        return None
+    if isinstance(val, (int, float)):
+        return float(val)
+    try:
+        s = str(val).replace(",", ".").strip()
+        match = re.search(r"[-+]?\d+(?:\.\d+)?", s)
+        if match:
+            return float(match.group(0))
+        return None
+    except Exception:
+        return None
 
 
 class InvoiceData(BaseModel):
@@ -72,27 +88,29 @@ class InvoiceData(BaseModel):
     @field_validator("contracted_power_kva", mode="before")
     @classmethod
     def normalize_power(cls, val):
-        if val is None:
+        f = _clean_numeric(val)
+        if f is None:
             return 3.45
-        try:
-            # Handle comma decimal strings (e.g. "3,45 kVA")
-            clean_str = str(val).lower().replace(",", ".").replace("kva", "").strip()
-            f = float(clean_str)
-            # Match to standard Portuguese BTN power tiers
-            valid_tiers = [1.15, 2.30, 3.45, 4.60, 5.75, 6.90, 10.35, 13.80, 17.25, 20.70]
-            closest = min(valid_tiers, key=lambda x: abs(x - f))
-            return closest
-        except Exception:
-            return 3.45
+        valid_tiers = [1.15, 2.30, 3.45, 4.60, 5.75, 6.90, 10.35, 13.80, 17.25, 20.70]
+        closest = min(valid_tiers, key=lambda x: abs(x - f))
+        return closest
 
     @field_validator("kwh_total", mode="before")
     @classmethod
     def normalize_kwh(cls, val):
-        if val is None:
-            return 0.0
-        try:
-            clean_str = str(val).lower().replace(",", ".").replace("kwh", "").strip()
-            return float(clean_str)
-        except Exception:
-            return 0.0
+        f = _clean_numeric(val)
+        return f if f is not None else 0.0
+
+    @field_validator("period_days", mode="before")
+    @classmethod
+    def normalize_period_days(cls, val):
+        f = _clean_numeric(val)
+        if f is None or f <= 0:
+            return 30
+        return int(round(f))
+
+    @field_validator("kwh_fv", "kwh_v", "current_tf_daily", "current_tv_rate", "billed_total_eur", "confidence_score", mode="before")
+    @classmethod
+    def normalize_optional_floats(cls, val):
+        return _clean_numeric(val)
 

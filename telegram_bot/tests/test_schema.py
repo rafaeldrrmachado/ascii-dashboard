@@ -37,6 +37,19 @@ class TestSchema(unittest.TestCase):
         inv = InvoiceData(kwh_total="245,8 kWh")
         self.assertEqual(inv.kwh_total, 245.8)
 
+    def test_currency_and_units_normalization(self):
+        """Verifies euros, days, and rate strings with symbols are cleanly parsed."""
+        inv = InvoiceData(
+            billed_total_eur="52,40 €",
+            period_days="30 dias",
+            current_tf_daily="0,2891 €/dia",
+            current_tv_rate="0,1540 €/kWh"
+        )
+        self.assertEqual(inv.billed_total_eur, 52.40)
+        self.assertEqual(inv.period_days, 30)
+        self.assertAlmostEqual(inv.current_tf_daily, 0.2891, places=4)
+        self.assertAlmostEqual(inv.current_tv_rate, 0.1540, places=4)
+
 
 if __name__ == "__main__":
     unittest.main()

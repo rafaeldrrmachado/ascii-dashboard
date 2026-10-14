@@ -66,8 +66,10 @@ async def parse_invoice_with_vision(
     # Encode file in base64
     b64_data = base64.b64encode(file_bytes).decode("utf-8")
 
-    # Prepare endpoint and request payload
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
+    models_to_try = [GEMINI_MODEL]
+    for fallback in ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-3-flash-preview", "gemini-3.8-flash"]:
+        if fallback and fallback not in models_to_try:
+            models_to_try.append(fallback)
 
     payload = {
         "contents": [
@@ -94,36 +96,82 @@ async def parse_invoice_with_vision(
     try:
         ssl_ctx = get_ssl_context()
         async with httpx.AsyncClient(verify=ssl_ctx, timeout=35.0) as client:
-            resp = await client.post(url, json=payload)
+            last_error_code = None
+            last_error_text = ""
 
-            if resp.status_code == 429:
-                return None, "⏳ Limite temporário da API excedido. Por favor, aguarda 30 segundos e tenta novamente."
+            for model_name in models_to_try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={GEMINI_API_KEY}"
+                resp = await client.post(url, json=payload)
 
-            if resp.status_code != 200:
-                logger.error("Gemini Vision API error %d: %s", resp.status_code, resp.text)
-                return None, f"❌ Erro na análise visual por IA (Código {resp.status_code}). Verifica se a tua chave Gemini API é válida."
+                if resp.status_code == 200:
+                    res_json = resp.json()
+                    candidates = res_json.get("candidates", [])
+                    if not candidates:
+                        return None, "❌ Não foi possível ler o documento. Certifica-te de que a imagem ou PDF está nítida."
 
-            res_json = resp.json()
-            candidates = res_json.get("candidates", [])
-            if not candidates:
-                return None, "❌ Não foi possível ler o documento. Certifica-te de que a imagem ou PDF está nítida."
+                    content_parts = candidates[0].get("content", {}).get("parts", [])
+                    if not content_parts:
+                        return None, "❌ A IA não devolveu resposta legível."
 
-            content_parts = candidates[0].get("content", {}).get("parts", [])
-            if not content_parts:
-                return None, "❌ A IA não devolveu resposta legível."
+                    raw_text = content_parts[0].get("text", "").strip()
+                    # Clean possible markdown wrap
+                    if raw_text.startswith("```json"):
+                        raw_text = raw_text[7:]
+                    if raw_text.startswith("```"):
+                        raw_text = raw_text[3:]
+                    if raw_text.endswith("```"):
+                        raw_text = raw_text[:-3]
 
-            raw_text = content_parts[0].get("text", "").strip()
-            # Clean possible markdown wrap
-            if raw_text.startswith("```json"):
-                raw_text = raw_text[7:]
-            if raw_text.startswith("```"):
-                raw_text = raw_text[3:]
-            if raw_text.endswith("```"):
-                raw_text = raw_text[:-3]
+                    parsed_raw = json.loads(raw_text.strip())
 
-            parsed_dict = json.loads(raw_text.strip())
-            invoice = InvoiceData.model_validate(parsed_dict)
-            return invoice, None
+                    # Handle list responses e.g. [{"supplier": "EDP..."}]
+                    if isinstance(parsed_raw, list):
+                        if not parsed_raw:
+                            return None, "❌ A IA não encontrou dados estruturados na fatura."
+                        parsed_dict = parsed_raw[0] if isinstance(parsed_raw[0], dict) else {}
+                    elif isinstance(parsed_raw, dict):
+                        # Handle possible wrappers e.g. {"invoice": {...}} or {"data": {...}}
+                        if "invoice" in parsed_raw and isinstance(parsed_raw["invoice"], dict):
+                            parsed_dict = parsed_raw["invoice"]
+                        elif "data" in parsed_raw and isinstance(parsed_raw["data"], dict):
+                            parsed_dict = parsed_raw["data"]
+                        elif "result" in parsed_raw and isinstance(parsed_raw["result"], dict):
+                            parsed_dict = parsed_raw["result"]
+                        else:
+                            parsed_dict = parsed_raw
+                    else:
+                        return None, "❌ Formato inesperado de dados da fatura."
+
+                    if not isinstance(parsed_dict, dict) or not parsed_dict:
+                        return None, "❌ Não foi possível extrair os dados da fatura em formato adequado."
+
+                    try:
+                        invoice = InvoiceData.model_validate(parsed_dict)
+                        return invoice, None
+                    except Exception as val_err:
+                        logger.error("Pydantic validation error: %s on data: %s", val_err, parsed_dict)
+                        return None, "❌ Erro ao validar os dados extraídos da fatura. Certifica-te de que a fatura é legível."
+
+                if resp.status_code == 429:
+                    return None, "⏳ Limite temporário da API excedido. Por favor, aguarda 30 segundos e tenta novamente."
+
+                last_error_code = resp.status_code
+                last_error_text = resp.text
+                logger.warning(
+                    "Gemini Vision model '%s' returned HTTP %d. Detail: %s",
+                    model_name,
+                    resp.status_code,
+                    resp.text[:200]
+                )
+
+                # Retry next fallback model if deprecated (404) or overloaded (503)
+                if resp.status_code in (404, 503):
+                    continue
+                else:
+                    break
+
+            logger.error("Gemini Vision API error %s: %s", last_error_code, last_error_text)
+            return None, f"❌ Erro na análise visual por IA (Código {last_error_code}). Verifica se a tua chave Gemini API é válida."
 
     except httpx.TimeoutException:
         return None, "⏱️ O tempo de resposta expirou. O ficheiro pode ser muito pesado ou a ligação está lenta. Tenta uma foto mais leve ou em formato JPG."
