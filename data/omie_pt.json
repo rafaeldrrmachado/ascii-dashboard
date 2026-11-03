@@ -2,585 +2,9 @@
   "market": "MIBEL_PT",
   "source": "OMIE (marginalpdbcpt)",
   "currency": "EUR/MWh",
-  "last_updated": "2026-11-02T22:29:22.168665",
+  "last_updated": "2026-11-03T13:08:04.564975",
   "total_points": 3172,
   "values": [
-    {
-      "datetime": "2026-10-02T00:00:00",
-      "value": 185.11,
-      "price_es": 185.11,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T00:15:00",
-      "value": 180.76,
-      "price_es": 180.76,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T00:30:00",
-      "value": 171.32,
-      "price_es": 171.32,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T00:45:00",
-      "value": 168.45,
-      "price_es": 168.45,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T01:00:00",
-      "value": 169.0,
-      "price_es": 169.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T01:15:00",
-      "value": 166.71,
-      "price_es": 166.71,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T01:30:00",
-      "value": 164.72,
-      "price_es": 164.72,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T01:45:00",
-      "value": 161.45,
-      "price_es": 161.45,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T02:00:00",
-      "value": 162.95,
-      "price_es": 162.95,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T02:15:00",
-      "value": 161.0,
-      "price_es": 161.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T02:30:00",
-      "value": 161.43,
-      "price_es": 161.43,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T02:45:00",
-      "value": 161.47,
-      "price_es": 161.47,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T03:00:00",
-      "value": 160.29,
-      "price_es": 160.29,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T03:15:00",
-      "value": 159.51,
-      "price_es": 159.51,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T03:30:00",
-      "value": 161.62,
-      "price_es": 161.62,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T03:45:00",
-      "value": 161.2,
-      "price_es": 161.2,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T04:00:00",
-      "value": 162.92,
-      "price_es": 162.92,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T04:15:00",
-      "value": 163.12,
-      "price_es": 163.12,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T04:30:00",
-      "value": 162.05,
-      "price_es": 162.05,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T04:45:00",
-      "value": 166.6,
-      "price_es": 166.6,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T05:00:00",
-      "value": 163.55,
-      "price_es": 163.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T05:15:00",
-      "value": 170.49,
-      "price_es": 170.49,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T05:30:00",
-      "value": 184.84,
-      "price_es": 184.84,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T05:45:00",
-      "value": 192.61,
-      "price_es": 192.61,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T06:00:00",
-      "value": 195.55,
-      "price_es": 195.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T06:15:00",
-      "value": 210.86,
-      "price_es": 210.86,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T06:30:00",
-      "value": 220.01,
-      "price_es": 220.01,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T06:45:00",
-      "value": 233.45,
-      "price_es": 233.45,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T07:00:00",
-      "value": 207.99,
-      "price_es": 207.99,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T07:15:00",
-      "value": 225.99,
-      "price_es": 225.99,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T07:30:00",
-      "value": 250.0,
-      "price_es": 250.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T07:45:00",
-      "value": 262.64,
-      "price_es": 262.64,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T08:00:00",
-      "value": 269.79,
-      "price_es": 269.79,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T08:15:00",
-      "value": 269.79,
-      "price_es": 269.79,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T08:30:00",
-      "value": 255.8,
-      "price_es": 255.8,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T08:45:00",
-      "value": 232.9,
-      "price_es": 232.9,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T09:00:00",
-      "value": 240.32,
-      "price_es": 240.32,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T09:15:00",
-      "value": 200.0,
-      "price_es": 200.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T09:30:00",
-      "value": 185.26,
-      "price_es": 185.26,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T09:45:00",
-      "value": 173.08,
-      "price_es": 173.08,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T10:00:00",
-      "value": 185.47,
-      "price_es": 185.47,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T10:15:00",
-      "value": 160.51,
-      "price_es": 160.51,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T10:30:00",
-      "value": 140.0,
-      "price_es": 140.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T10:45:00",
-      "value": 129.43,
-      "price_es": 129.43,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T11:00:00",
-      "value": 130.38,
-      "price_es": 130.38,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T11:15:00",
-      "value": 120.2,
-      "price_es": 120.2,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T11:30:00",
-      "value": 120.0,
-      "price_es": 120.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T11:45:00",
-      "value": 119.68,
-      "price_es": 119.68,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T12:00:00",
-      "value": 119.81,
-      "price_es": 119.81,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T12:15:00",
-      "value": 119.55,
-      "price_es": 119.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T12:30:00",
-      "value": 118.5,
-      "price_es": 118.5,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T12:45:00",
-      "value": 119.55,
-      "price_es": 119.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T13:00:00",
-      "value": 119.55,
-      "price_es": 119.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T13:15:00",
-      "value": 118.1,
-      "price_es": 118.1,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T13:30:00",
-      "value": 115.02,
-      "price_es": 115.02,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T13:45:00",
-      "value": 115.0,
-      "price_es": 115.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T14:00:00",
-      "value": 112.5,
-      "price_es": 112.5,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T14:15:00",
-      "value": 115.0,
-      "price_es": 115.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T14:30:00",
-      "value": 115.02,
-      "price_es": 115.02,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T14:45:00",
-      "value": 115.0,
-      "price_es": 115.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T15:00:00",
-      "value": 118.1,
-      "price_es": 118.1,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T15:15:00",
-      "value": 119.55,
-      "price_es": 119.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T15:30:00",
-      "value": 119.68,
-      "price_es": 119.68,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T15:45:00",
-      "value": 119.94,
-      "price_es": 119.94,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T16:00:00",
-      "value": 120.0,
-      "price_es": 120.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T16:15:00",
-      "value": 120.2,
-      "price_es": 120.2,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T16:30:00",
-      "value": 123.99,
-      "price_es": 123.99,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T16:45:00",
-      "value": 130.83,
-      "price_es": 130.83,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T17:00:00",
-      "value": 130.38,
-      "price_es": 130.38,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T17:15:00",
-      "value": 133.23,
-      "price_es": 133.23,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T17:30:00",
-      "value": 150.0,
-      "price_es": 150.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T17:45:00",
-      "value": 166.04,
-      "price_es": 166.04,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T18:00:00",
-      "value": 160.91,
-      "price_es": 160.91,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T18:15:00",
-      "value": 192.61,
-      "price_es": 192.61,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T18:30:00",
-      "value": 205.0,
-      "price_es": 205.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T18:45:00",
-      "value": 246.2,
-      "price_es": 246.2,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T19:00:00",
-      "value": 195.0,
-      "price_es": 195.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T19:15:00",
-      "value": 223.47,
-      "price_es": 223.47,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T19:30:00",
-      "value": 269.79,
-      "price_es": 269.79,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T19:45:00",
-      "value": 270.62,
-      "price_es": 270.62,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T20:00:00",
-      "value": 279.83,
-      "price_es": 279.83,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T20:15:00",
-      "value": 279.83,
-      "price_es": 279.83,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T20:30:00",
-      "value": 261.82,
-      "price_es": 261.82,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T20:45:00",
-      "value": 248.08,
-      "price_es": 248.08,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T21:00:00",
-      "value": 244.78,
-      "price_es": 244.78,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T21:15:00",
-      "value": 238.14,
-      "price_es": 238.14,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T21:30:00",
-      "value": 224.99,
-      "price_es": 224.99,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T21:45:00",
-      "value": 211.92,
-      "price_es": 211.92,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T22:00:00",
-      "value": 210.53,
-      "price_es": 210.53,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T22:15:00",
-      "value": 207.0,
-      "price_es": 207.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T22:30:00",
-      "value": 200.0,
-      "price_es": 200.0,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T22:45:00",
-      "value": 194.89,
-      "price_es": 194.89,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T23:00:00",
-      "value": 201.62,
-      "price_es": 201.62,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T23:15:00",
-      "value": 197.52,
-      "price_es": 197.52,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T23:30:00",
-      "value": 194.55,
-      "price_es": 194.55,
-      "decoupled": false
-    },
-    {
-      "datetime": "2026-10-02T23:45:00",
-      "value": 185.1,
-      "price_es": 185.1,
-      "decoupled": false
-    },
     {
       "datetime": "2026-10-03T00:00:00",
       "value": 204.51,
@@ -19036,6 +18460,582 @@
       "value": 239.0,
       "price_es": 239.0,
       "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T00:00:00",
+      "value": 247.63,
+      "price_es": 247.63,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T00:15:00",
+      "value": 244.04,
+      "price_es": 244.04,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T00:30:00",
+      "value": 236.0,
+      "price_es": 236.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T00:45:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T01:00:00",
+      "value": 240.67,
+      "price_es": 240.67,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T01:15:00",
+      "value": 239.0,
+      "price_es": 239.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T01:30:00",
+      "value": 230.0,
+      "price_es": 230.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T01:45:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T02:00:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T02:15:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T02:30:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T02:45:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T03:00:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T03:15:00",
+      "value": 221.16,
+      "price_es": 221.16,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T03:30:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T03:45:00",
+      "value": 222.26,
+      "price_es": 222.26,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T04:00:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T04:15:00",
+      "value": 221.15,
+      "price_es": 221.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T04:30:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T04:45:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T05:00:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T05:15:00",
+      "value": 231.5,
+      "price_es": 231.5,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T05:30:00",
+      "value": 245.0,
+      "price_es": 245.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T05:45:00",
+      "value": 262.44,
+      "price_es": 262.44,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T06:00:00",
+      "value": 252.83,
+      "price_es": 252.83,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T06:15:00",
+      "value": 270.0,
+      "price_es": 270.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T06:30:00",
+      "value": 273.62,
+      "price_es": 273.62,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T06:45:00",
+      "value": 274.62,
+      "price_es": 274.62,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T07:00:00",
+      "value": 284.07,
+      "price_es": 284.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T07:15:00",
+      "value": 289.86,
+      "price_es": 289.86,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T07:30:00",
+      "value": 300.53,
+      "price_es": 300.53,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T07:45:00",
+      "value": 310.23,
+      "price_es": 310.23,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T08:00:00",
+      "value": 316.01,
+      "price_es": 316.01,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T08:15:00",
+      "value": 302.18,
+      "price_es": 302.18,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T08:30:00",
+      "value": 297.14,
+      "price_es": 297.14,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T08:45:00",
+      "value": 284.07,
+      "price_es": 284.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T09:00:00",
+      "value": 286.1,
+      "price_es": 286.1,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T09:15:00",
+      "value": 274.0,
+      "price_es": 274.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T09:30:00",
+      "value": 267.79,
+      "price_es": 267.79,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T09:45:00",
+      "value": 238.07,
+      "price_es": 238.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T10:00:00",
+      "value": 229.28,
+      "price_es": 229.28,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T10:15:00",
+      "value": 193.19,
+      "price_es": 193.19,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T10:30:00",
+      "value": 190.0,
+      "price_es": 190.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T10:45:00",
+      "value": 184.07,
+      "price_es": 184.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T11:00:00",
+      "value": 182.25,
+      "price_es": 182.25,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T11:15:00",
+      "value": 180.94,
+      "price_es": 180.94,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T11:30:00",
+      "value": 180.81,
+      "price_es": 180.81,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T11:45:00",
+      "value": 180.81,
+      "price_es": 180.81,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T12:00:00",
+      "value": 180.81,
+      "price_es": 180.81,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T12:15:00",
+      "value": 180.81,
+      "price_es": 180.81,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T12:30:00",
+      "value": 180.94,
+      "price_es": 180.94,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T12:45:00",
+      "value": 181.07,
+      "price_es": 181.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T13:00:00",
+      "value": 181.2,
+      "price_es": 181.2,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T13:15:00",
+      "value": 181.2,
+      "price_es": 181.2,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T13:30:00",
+      "value": 182.0,
+      "price_es": 182.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T13:45:00",
+      "value": 182.0,
+      "price_es": 182.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T14:00:00",
+      "value": 182.25,
+      "price_es": 182.25,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T14:15:00",
+      "value": 182.8,
+      "price_es": 182.8,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T14:30:00",
+      "value": 183.2,
+      "price_es": 183.2,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T14:45:00",
+      "value": 184.07,
+      "price_es": 184.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T15:00:00",
+      "value": 184.07,
+      "price_es": 184.07,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T15:15:00",
+      "value": 185.23,
+      "price_es": 185.23,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T15:30:00",
+      "value": 190.08,
+      "price_es": 190.08,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T15:45:00",
+      "value": 200.43,
+      "price_es": 200.43,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T16:00:00",
+      "value": 215.0,
+      "price_es": 215.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T16:15:00",
+      "value": 235.0,
+      "price_es": 235.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T16:30:00",
+      "value": 267.79,
+      "price_es": 267.79,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T16:45:00",
+      "value": 286.1,
+      "price_es": 286.1,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T17:00:00",
+      "value": 232.92,
+      "price_es": 232.92,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T17:15:00",
+      "value": 280.0,
+      "price_es": 280.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T17:30:00",
+      "value": 309.63,
+      "price_es": 309.63,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T17:45:00",
+      "value": 316.15,
+      "price_es": 316.15,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T18:00:00",
+      "value": 301.98,
+      "price_es": 301.98,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T18:15:00",
+      "value": 310.44,
+      "price_es": 307.14,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T18:30:00",
+      "value": 313.54,
+      "price_es": 309.2,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T18:45:00",
+      "value": 330.0,
+      "price_es": 310.0,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T19:00:00",
+      "value": 337.49,
+      "price_es": 309.14,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T19:15:00",
+      "value": 344.11,
+      "price_es": 307.79,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T19:30:00",
+      "value": 356.69,
+      "price_es": 300.77,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T19:45:00",
+      "value": 357.69,
+      "price_es": 298.67,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T20:00:00",
+      "value": 380.0,
+      "price_es": 291.85,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T20:15:00",
+      "value": 380.0,
+      "price_es": 287.98,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T20:30:00",
+      "value": 376.81,
+      "price_es": 288.92,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T20:45:00",
+      "value": 380.0,
+      "price_es": 287.04,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T21:00:00",
+      "value": 370.0,
+      "price_es": 288.92,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T21:15:00",
+      "value": 370.0,
+      "price_es": 287.98,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T21:30:00",
+      "value": 370.0,
+      "price_es": 284.01,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T21:45:00",
+      "value": 360.96,
+      "price_es": 275.62,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T22:00:00",
+      "value": 334.81,
+      "price_es": 286.1,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T22:15:00",
+      "value": 331.64,
+      "price_es": 281.79,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T22:30:00",
+      "value": 330.24,
+      "price_es": 275.0,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T22:45:00",
+      "value": 315.0,
+      "price_es": 267.79,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T23:00:00",
+      "value": 284.07,
+      "price_es": 281.79,
+      "decoupled": true
+    },
+    {
+      "datetime": "2026-11-04T23:15:00",
+      "value": 275.0,
+      "price_es": 275.0,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T23:30:00",
+      "value": 273.62,
+      "price_es": 273.62,
+      "decoupled": false
+    },
+    {
+      "datetime": "2026-11-04T23:45:00",
+      "value": 270.38,
+      "price_es": 267.79,
+      "decoupled": true
     }
   ]
 }
